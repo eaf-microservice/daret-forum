@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <base href="/daret-forum/">
+  <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -99,6 +99,7 @@
     }
   </script>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <script src="flutter.js" defer></script>
 </head>
 
 <body>
@@ -144,6 +145,11 @@
 
     window.addEventListener('error', function (event) {
       console.error('Global error:', event);
+      document.getElementById('loading').innerHTML += '<pre style="color: red;">Global error: ' + event.error?.message + '\n' + event.error?.stack + '</pre>';
+    });
+    window.addEventListener('unhandledrejection', function (event) {
+      console.error('Unhandled rejection:', event.reason);
+      document.getElementById('loading').innerHTML += '<pre style="color: orange;">Unhandled rejection: ' + event.reason + '</pre>';
     });
   </script>
 
